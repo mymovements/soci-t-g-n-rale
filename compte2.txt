@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte Bancaire - Société Générale</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .account-info {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Logo_Société_Générale.svg/1280px-Logo_Société_Générale.svg.png" alt="Société Générale" width="200">
+    <h1>Compte Bancaire</h1>
+    <div class="account-info">
+        <p><strong>Titulaire du compte:</strong> Alain Rodriguez</p>
+        <p><strong>Banque:</strong> Société Générale</p>
+        <p><strong>Solde:</strong> <span id="solde">500000</span>€</p>
+    </div>
+
+    <script>
+        // Code JavaScript pour les opérations sur le compte
+        function deposer() {
+            var montant = parseFloat(prompt("Entrez le montant à déposer:"));
+            var soldeActuel = parseFloat(document.getElementById("solde").textContent);
+            var nouveauSolde = soldeActuel + montant;
+            document.getElementById("solde").textContent = nouveauSolde.toFixed(2);
+            alert("Montant déposé avec succès !");
+        }
+
+        function retirer() {
+            var montant = parseFloat(prompt("Entrez le montant à retirer:"));
+            var soldeActuel = parseFloat(document.getElementById("solde").textContent);
+            if (montant > soldeActuel) {
+                alert("Fonds insuffisants !");
+            } else {
+                var nouveauSolde = soldeActuel - montant;
+                document.getElementById("solde").textContent = nouveauSolde.toFixed(2);
+                alert("Retrait effectué avec succès !");
+            }
+        }
+    </script>
+
+    <button onclick="deposer()">Déposer de l'argent</button>
+    <button onclick="retirer()">Retirer de l'argent</button>
+</div>
+
+</body>
+</html>
